@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Chad's Desk Temperatures
+
+  #loader Loading data...
+
+  #graph
+
+block scripts
+  script(async src="/javascripts/index.js")
