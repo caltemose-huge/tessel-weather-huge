@@ -7,7 +7,7 @@ Zepto(function ($) {
     var trace = {
       x: [],
       y: [],
-      type: 'scatter'
+      mode: 'markers'
     }
     var totalTemp = 0
     for(var i=0; i<records.length; i++) {

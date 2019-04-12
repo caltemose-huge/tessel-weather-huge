@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var AirTable = require('airtable')
+var moment = require('moment')
+
 require('dotenv').config()
 
 var API_KEY = process.env.AIRTABLE_KEY
@@ -31,6 +33,11 @@ router.get('/api', function (req, res, next) {
 
   }, function done(err) {
     if (err) { console.error(err); return; }
+    weatherRecords.forEach(function (record) {
+      // fix record date
+      var date = moment(record.fields.date)//.subtract(4,'hours')
+      record.fields.date = (date.format(moment.HTML5_FMT.DATETIME_LOCAL))
+    })
     res.json({ records: weatherRecords })
   });
 })
