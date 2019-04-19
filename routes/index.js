@@ -36,7 +36,7 @@ router.get('/api', function (req, res, next) {
     if (err) { console.error(err); return; }
     weatherRecords.forEach(function (record) {
       // fix record date
-      var date = moment(record.fields.date)//.subtract(4,'hours')
+      var date = moment(record.fields.date).subtract(4,'hours')
       record.fields.date = (date.format(moment.HTML5_FMT.DATETIME_LOCAL))
     })
     res.json({ records: weatherRecords })
