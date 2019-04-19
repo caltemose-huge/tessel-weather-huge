@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var AirTable = require('airtable')
+// var AirTable = require('airtable')
 var moment = require('moment')
 
 require('dotenv').config()
@@ -25,7 +25,8 @@ router.get('/api', function (req, res, next) {
   base('Table 1').select({
     // Selecting the first 3 records in Grid view:
     maxRecords: 1200,
-    view: "Grid view"
+    view: "Grid view",
+    sort: [{field:"id", direction:"desc"}]
   }).eachPage(function page(records, fetchNextPage) {
     weatherRecords = weatherRecords.concat(records)
 
